@@ -8,8 +8,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ../app ./app
 
-COPY ../model ./model
+COPY ../models ./models
 
 COPY ../data ./data
 
-CMD ["python", "app/main.py"]
+CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+
+EXPOSE 8000
