@@ -12,8 +12,8 @@ meta_path = os.path.join(project_root, "models", "decision_threshold.json")
 
 model_service = ModelService(model_path, meta_path)
 
-@api_v1_router.get("/status")
-def get_status():
+@api_v1_router.get("/health")
+def get_health():
     return {"status": "ok"}
 
 @api_v1_router.get("/threshold")
