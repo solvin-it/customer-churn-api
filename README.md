@@ -52,6 +52,11 @@ This repository demonstrates a full-stack ML workflow: from data exploration and
 
 ## 🖥️ API Usage
 
+### 🌐 Live Demo
+
+The API is deployed and accessible here:  
+👉 [Customer Churn Predictor API (GCP Deployment)](https://churn.solvin.co/docs)
+
 ### Run Locally
 
 ```bash
