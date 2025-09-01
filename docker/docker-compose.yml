@@ -1,12 +1,30 @@
-version: '3.8'
 services:
   app:
-    build: .
+    image: fernandogonzzz/customer-churn-api:latest
     ports:
-      - "8000:8000"
-    volumes:
-      - ../app:/app
-      - ../model:/model
-      - ../data:/data
+      - "8000:80"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:80/health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
     env_file:
       - .env
+    environment:
+      APP_NAME: ${APP_NAME:-customer-churn-api}
+      APP_VERSION: ${APP_VERSION:-0.0.0}
+      APP_DESCRIPTION: ${APP_DESCRIPTION:-"Customer churn API"}
+      APP_URL: ${APP_URL:-http://localhost:8000}
+    working_dir: /app
+    # profiles: ["prod"]
+
+volumes: {}
