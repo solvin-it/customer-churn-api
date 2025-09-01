@@ -1,5 +1,6 @@
 import logging.config
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from .core.config import settings
 from .api.v1.routes import api_v1_router
@@ -24,9 +25,7 @@ app.include_router(api_v1_router)
 
 @app.get("/")
 def root():
-    return {
-        "message": "Hello, World!"
-    }
+    return RedirectResponse(url="/docs")
 
 # To run the FastAPI app in development mode, use the following command:
 # uvicorn app.main:app --reload --reload-dir app
