@@ -12,6 +12,6 @@ COPY ../models ./models
 
 COPY ../data ./data
 
-CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+CMD ["fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "80"]
 
-EXPOSE 8000
+EXPOSE 80
